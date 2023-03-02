@@ -56,7 +56,7 @@ User_loginService会调用User_loginMapper接口，又要给User_loginConterller
 
 ## 实现过程
 ### 1、ssm框架搭建
-（1）数据库建立数据表，以便于后面的数据库连接和增删改查操作做准备
+####（1）数据库建立数据表，以便于后面的数据库连接和增删改查操作做准备
 user_login表（用户表）
 
 ![图片](https://user-images.githubusercontent.com/59997978/222330470-0fe2ede8-52b2-4f39-b04a-b64614d86f83.png)
@@ -78,12 +78,12 @@ ads_area_topics表（2022年5月20-6月2日的日订单量和销售量数据）:
 
 ![图片](https://user-images.githubusercontent.com/59997978/222330621-c1b9a7f8-08e4-4ab6-84a0-9ef59c15fa20.png)
 
-###（2）在eclispe中创建maven web项目，这里我的项目名是day0915:
+####（2）在eclispe中创建maven web项目，这里我的项目名是day0915:
 
 ![图片](https://user-images.githubusercontent.com/59997978/222330652-16f0ea16-a759-42ab-a871-a972096b9ae7.png)
 
 
-###（3）配置文件
+####（3）配置文件
 Web.xml
 
 ![图片](https://user-images.githubusercontent.com/59997978/222330724-03fd03cb-a297-4e9e-b08e-8c79f80610f2.png)
@@ -104,7 +104,7 @@ SpringMVC.xml文件配置视图解析器：
 
 ![图片](https://user-images.githubusercontent.com/59997978/222330846-4a163803-c7ae-4943-9d9f-eb0d658a55ed.png)
 
-###（4）用户注册 
+####（4）用户注册 
 在pojo包下创建实体类user_login.java，和数据库user_login表属性一致
 ```
 public class User_login {
@@ -115,7 +115,7 @@ public class User_login {
 	String address;//用户地址
 	String phone;//用户电话号码
 ```
-###（5）创建UserMapper接口
+####（5）创建UserMapper接口
 ```
 public interface User_loginMapper {
 	//通过用户Id查询用户
@@ -125,7 +125,7 @@ public interface User_loginMapper {
 	List<User_login> selectUser_login();
 ```
 
-###（6）创建User_loginMapper.xml配置文件
+####（6）创建User_loginMapper.xml配置文件
 在src/main/resources源文件夹下创建User_loginMapper.xml配置文件,里面写了一些查询和插入数据库的具体实现方法，是最接近数据库的一层。
 ```
 <mapper namespace="cn.yq.ssm.mapper.User_loginMapper">
@@ -145,7 +145,7 @@ public interface User_loginMapper {
 	</insert>
 ```
 
-###（7）创建service接口User_loginService.java和实现类User_loginServiceImpl.java
+####（7）创建service接口User_loginService.java和实现类User_loginServiceImpl.java
 在src/main/java源文件夹下创建com.cn.yn.service包，并在该包下创建User_loginService.java接口
 ```
 User_loginService.java
@@ -179,7 +179,7 @@ public class User_loginServiceImpl implements User_loginService{
 	}
 }
 ```
-###（8）创建UserController.java控制器类
+####（8）创建UserController.java控制器类
 其中‘/select’等表示localhost：8080视图层访问相关jsp页面的访问路径
 ```
 //注入数据
@@ -276,7 +276,7 @@ public class User_loginServiceImpl implements User_loginService{
     }
 }
 ```
-###（9）登录页面：login.jsp（代码太多就贴一下重点的）
+####（9）登录页面：login.jsp（代码太多就贴一下重点的）
 主要是用的表单提交申请以后，将请求转发通过User_loginMapper.xml(配置文件)——> User_login.java(实体类)——>UserMapper.java(动态接口)——>UserServiceImpl(业务逻辑)——>UserService(接口)—>UserController——>login.jsp的逆向顺序调用方法和借口，顺向传递数据再显示在页面上。
 ```
 <div class="formControls col-xs-8">
@@ -295,8 +295,8 @@ public class User_loginServiceImpl implements User_loginService{
           <a href="/day0915/user/zc.do" class="btn btn-default radius size-L">&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;册&nbsp;</a>
        </div>
       </div>
-      ```
-###（10）实现登录注册
+  ```
+####（10）实现登录注册
 登录
 
 ![图片](https://user-images.githubusercontent.com/59997978/222331093-79dee9d8-34df-468e-8a33-b5ae5ebde2a8.png)
@@ -318,7 +318,8 @@ public class User_loginServiceImpl implements User_loginService{
 ![图片](https://user-images.githubusercontent.com/59997978/222331228-99af2892-d11c-4652-a6d1-93a0c3e02025.png)
 
 我们可以看到用户信息已插入进去了，至此登录注册功能就已经完成了。
-2、IP修改和添加
+
+### 2、IP修改和添加
 ip修改和用户注册登录功能和实现原理基本相同，首先是建立path表：
 
 hadoopPath表示虚拟机ip地址;
@@ -368,7 +369,7 @@ ip修改和添加主要代码（以添加为例）：
 
 ![图片](https://user-images.githubusercontent.com/59997978/222331349-99961265-6465-486d-8467-6e164f787523.png)
 
-3、地图模块
+### 3、地图模块
 首先建立city表：
 
 
